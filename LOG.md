@@ -21,3 +21,7 @@ Actions completed:
 ## Reproducibility status
 
 **Evidence-preserving, not fully reproducible from this checkout.** The code for the original run is present in the notebook, but raw activation caches, per-prompt outcomes, generated figures/tensors, dependency lockfile, and the original runtime are not. A future rerun must create a new dated evidence bundle rather than overwrite these stored results.
+
+## Handoff to paper planning
+
+The repository is now ready for a paper discussion. The paper should begin as a narrow robustness/replication report based on the stored measurements. It should not present the unexecuted head-by-MLP factorial test as a finding. The next decision is the paper’s title, central claim, and target audience—not another undocumented experiment.
