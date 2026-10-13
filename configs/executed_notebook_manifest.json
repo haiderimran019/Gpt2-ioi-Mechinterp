@@ -1,0 +1,18 @@
+{
+  "evidence_status": "executed notebook outputs; not independently rerun in this repository checkout",
+  "source_notebook": "01_pynb.ipynb",
+  "model": "GPT-2 Small",
+  "environment_recorded_in_notebook": {
+    "python": "3.13.15",
+    "torch": "2.11.0+cu128",
+    "transformer_lens": "4.0.0",
+    "transformers": "5.17.0",
+    "hardware": "Tesla T4"
+  },
+  "primary_dataset": {"id": "D0", "n": 100, "seed": 0, "template": "When {first} and {second} went to the {place}, {subject} gave a {object} to"},
+  "held_out_template": {"id": "D1", "n": 100, "seed": 1, "template": "After {first} and {second} arrived at the {place}, {subject} handed a {object} to"},
+  "held_out_lexicon": {"id": "D2", "n": 100, "seed": 2, "template": "same syntactic template as D0; disjoint notebook lexical lists"},
+  "metric": "Mean correct-indirect-object logit minus subject-name logit. Patching score is the fraction of the clean-to-corrupted mean gap removed by replacing a component activation with its corrupted activation.",
+  "interventions": ["per-head corrupted activation patching", "per-head zero ablation", "per-MLP-output corrupted activation patching", "per-MLP-output zero ablation", "cumulative multi-head patching"],
+  "known_evidence_limitations": ["Raw activations, per-example intervention values, and result tensors are absent from this checkout. The generated CSV and JSON files are checked transcriptions of printed notebook outputs.", "The notebook’s stale prose summaries were corrected, but the numerical record used in results/executed_notebook_evidence.json remains taken from its printed execution outputs.", "No factorial head-by-MLP intervention was executed, so this repository does not support a causal claim about head-MLP interaction.", "No same-template new-seed noise ceiling, rank-correlation confidence interval, or held-out top-k cumulative-patching evaluation was stored."]
+}

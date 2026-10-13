@@ -1,209 +1,59 @@
-# Mechanistic Interpretability of GPT-2 Small for IOI
+# GPT-2 Small IOI: an audited intervention study
 
-## Status
+This repository records a first mechanistic-interpretability study of GPT-2 Small on **Indirect Object Identification (IOI)**. The original work is in [`01_pynb.ipynb`](01_pynb.ipynb). This revision makes a crucial distinction: the notebook contains evidence of a completed run, but this checkout does **not** contain its raw tensors or a runnable environment. The reported values below are therefore **stored notebook outputs**, not a newly rerun experiment.
 
-**Phase 1: Complete**  
-**Phase 2: Complete**  
-**Current Stage: Research Question Development**
+The full paper is [`REPORT.md`](REPORT.md); the concise evidence audit is [`RESULTS.md`](RESULTS.md).
 
-This project investigates how GPT-2 Small performs the **Indirect Object Identification (IOI)** task using mechanistic interpretability techniques.
+## Current stage
 
-The first phase was a hands-on experimental study of GPT-2 Small. The second phase focused on reading existing work on mechanistic interpretability, circuit discovery, and related approaches.
+The repository now contains the completed evidence based paper, its PDF, the corrected notebook, and the full audit record. The paper is a replication and audit report based on stored notebook outputs. It does not claim a new circuit or a completed head and MLP interaction experiment.
 
----
+## What the stored run supports
 
-## Model
+On 100 D0 prompts, the notebook reported a clean IOI logit difference of 3.60, a corrupted value of -0.32, and 100% IO-over-subject accuracy. Corrupted-activation patching ranked L8H6 highest (0.379 fraction of the clean-corrupted gap removed; bootstrap 95% CI [0.350, 0.409]). The ten highest-ranked heads were reproduced exactly in the notebook’s held-out template and lexical-set sweeps (rank correlations 0.933 and 0.912 respectively).
 
-- GPT-2 Small
-- 12 layers
-- 12 attention heads per layer
-- ~124M parameters
-- TransformerLens
-- Google Colab / GPU
+It also reports broad MLP-output patching effects, especially at layer 0 (0.973) and layer 5 (0.224). This is evidence that those **whole MLP outputs are causally consequential under the stated intervention**. It is not evidence that a particular MLP mediates a particular head: no head-by-MLP factorial or path-patching experiment was run.
 
-## Task
+The notebook also records the canonical role pattern described in earlier IOI work. The patching top ten include S inhibition, induction related, duplicate token, and name mover heads. Negative patching scores for L10H7 and L11H10 have the sign expected for negative name movers. These are role comparisons with prior work, not a new circuit discovery.
 
-The model was tested on sentences such as:
+In beginner-friendly terms: an intervention temporarily swaps or removes an internal signal and checks whether the model’s answer changes. A “logit difference” is simply the model’s preference for the correct name over the competing name. D0 is the main prompt set, D1 changes the wording, and D2 changes the vocabulary.
 
-> When John and Mary went to the store, John gave a drink to
+## What this repository does not claim
 
-The evaluation used **logit difference** between the expected indirect-object token and the subject token.
+- No independently repeated execution was performed in this checkout.
+- No new IOI circuit, novelty, or head–MLP mechanism is claimed.
+- The results are not sufficient to identify a causal edge from a named attention head to an MLP.
+- The missing raw outputs prevent recomputation of CIs, p-values, rank uncertainty, or alternative statistics.
 
-## Datasets
-
-Three datasets were used:
-
-- **D0:** 100 examples using the original template.
-- **D1:** 100 examples using a different prompt template.
-- **D2:** 100 examples using new lexical items.
-
-## Methods
-
-The project used:
-
-- Attention-head importance sweeps
-- Activation patching
-- Zero-ablation
-- Bootstrap confidence intervals
-- Cumulative patching
-- Attention-pattern visualization
-- MLP-layer intervention
-- Robustness testing
-
-## Phase 1 — Experimental Results
-
-### Attention Heads
-
-Top patching heads on D0 included:
-
-- L8H6
-- L5H5
-- L8H10
-- L7H9
-- L9H9
-
-The Spearman correlation between patching and zero-ablation rankings was **0.49**.
-
-Six heads appeared in both top-10 lists:
-
-- L8H6
-- L8H10
-- L7H9
-- L9H9
-- L6H9
-- L5H9
-
-### Robustness
-
-For the held-out template D1:
-
-- Spearman correlation: **0.93**
-- Top-10 overlap: **10/10**
-
-For new lexical items D2:
-
-- Spearman correlation: **0.91**
-- Top-10 overlap: **10/10**
-
-### Cumulative Patching
-
-Approximately 8 top-ranked heads recovered nearly the entire measured logit gap and substantially outperformed random head selection.
-
-### MLP Analysis
-
-Important MLP layers were also identified.
-
-Top layers by patching included:
-
-- L0: 0.973
-- L5: 0.224
-- L4: 0.131
-
-This suggests that IOI performance involves contributions from both attention heads and MLP layers.
-
-## Phase 1 Conclusion
-
-The experiments identified a relatively small set of influential attention heads and significant MLP contributions in the controlled IOI task.
-
-The results were also robust across the tested prompt-template and lexical changes.
-
-This was a **learning and replication project**, not a claim of discovering a new IOI circuit. IOI and its circuits have already been studied extensively.
-
-## Phase 1 Limitations
-
-- Small controlled datasets
-- Limited prompt templates
-- Only GPT-2 Small was tested
-- Attention importance does not by itself establish a complete circuit
-- Attention visualization does not by itself establish causality
-- Interactions between attention heads and MLPs were not fully investigated
-
----
-
-# Phase 2 — Literature Review
-
-After completing the initial experiments, I studied existing research to understand the ideas behind circuit discovery and how my experiment relates to previous work.
-
-### Wang et al. (2022)
-
-*Interpretability in the Wild: A Circuit for Indirect Object Identification in GPT-2 Small*
-
-This paper studies the IOI task in GPT-2 Small and identifies a circuit involving multiple groups of attention heads.
-
-The main ideas I learned were:
-
-- Model behavior can sometimes be explained through interacting components.
-- Different attention heads can have different functional roles.
-- Ablation can be used to test whether components are important.
-- Path patching can be used to study information flow between components.
-- A proposed mechanism needs causal testing rather than only correlation.
-
-This paper provided the main conceptual background for the IOI experiments.
-
-### Conmy et al. (2023)
-
-*Towards Automated Circuit Discovery for Mechanistic Interpretability*
-
-This paper introduces **ACDC**, a method for automating part of the process of circuit discovery.
-
-The main ideas I learned were:
-
-- Neural networks can be represented as computational graphs.
-- Connections in the graph can be tested using interventions.
-- Circuit discovery can be made more systematic and partially automated.
-- The process still depends on choices such as the task, dataset, and evaluation metric.
-
-This paper helped me understand how the manual circuit analysis in Wang et al. could potentially be approached more automatically.
-
-### Fey et al. (2024)
-
-*Position: Relational Deep Learning - Graph Representation Learning on Relational Databases*
-
-This is **related work**, rather than a mechanistic interpretability paper.
-
-The paper studies how neural networks can learn from relationships in relational databases by representing entities and their relationships as graphs.
-
-The main ideas I learned were:
-
-- Real-world data contains relationships and structure.
-- Relational databases can be represented as graphs.
-- Graph neural networks can learn from these relationships.
-- This provides another perspective on how machine learning systems can use structure.
-
-I am exploring this direction because of its broader connection to learning from structure, although it is a separate research area from the current IOI project.
-
-## What I Understand So Far
-
-The literature helped me distinguish between:
-
-- **Understanding structure inside a trained model** — Wang et al.
-- **Discovering model structure** — Conmy et al.
-- **Learning from structure in data** — Fey et al.
-
-These papers do not solve the same problem. The first two are directly connected to the current GPT-2 IOI project, while relational deep learning is a separate related direction.
-
-## Current Stage
-
-The experimental and initial literature-review phases are complete.
-
-The next step is to use what I learned from the experiments and literature to define a **small, specific, and experimentally testable research question**.
-
-I have not yet claimed a new research contribution.
-
----
-
-## Repository
+## Files
 
 ```text
-gpt2-ioi-mechinterp/
-├── literature/
-├── 01_pynb.ipynb
-├── LOG.md
-└── README.md
+01_pynb.ipynb                         original executed notebook and embedded figures
+configs/executed_notebook_manifest.json exact study record and evidence limits
+scripts/extract_notebook_evidence.py   extracts the stored evidence; does not run GPT-2
+results/                               generated CSV/JSON evidence tables and notebook figures
+output/pdf/gpt2_ioi_research_paper.pdf  readable PDF of the current paper draft
+scripts/build_paper_pdf.py              rebuilds the PDF from REPORT.md
+RESULTS.md                             reconciled results and error audit
+REPORT.md                              full paper draft with methods, results, limits, and references
+LOG.md                                 chronological project and audit record
+literature/                            reading notes and literature index
 ```
 
-The `01_pynb.ipynb` notebook contains the experimental work from Phase 1.
+## Quick audit
 
-`LOG.md` records the development of the project over time.
+```bash
+python3 scripts/extract_notebook_evidence.py
+```
 
-The `literature/` directory contains notes from the papers studied during Phase 2.
+This only materialises existing notebook outputs. It does not download a model, alter the original notebook, or create fresh measurements.
+
+## Paper status
+
+The paper is finalized for this project stage. It is honest about what was measured, what was inferred from prior literature, and what was not run. The strongest claim is a robustness and replication result: the same heads ranked highly across two controlled prompt shifts. A head and MLP interaction claim remains a proposed future experiment, not a result.
+
+The PDF can be shared as a project report. For a formal publication, the next step would be an independent rerun with raw per prompt outputs, rank uncertainty, held out top k evaluation, and the factorial head and MLP experiment described in the paper.
+
+## Re-running later
+
+`requirements.txt` records the package family used by the original notebook. Before treating a rerun as a replication, pin an environment that can actually install the historical CUDA/Tesla-T4 stack, save per-prompt values and activations, and run the registered factorial head-by-MLP design in the paper’s Future Work section.

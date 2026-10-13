@@ -1,0 +1,9 @@
+# Environment recorded by the executed notebook. Install only to reproduce runs.
+torch==2.11.0
+transformer-lens==4.0.0
+transformers==5.17.0
+numpy
+scipy
+matplotlib
+pandas
+reportlab

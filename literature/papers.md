@@ -22,7 +22,7 @@ Focus:
 **Main question:**  
 How does GPT-2 Small internally perform IOI?
 
-[My notes →](./wang-2022.md)
+[My notes →](./IOI_2022_Wang.md)
 
 ---
 
@@ -40,7 +40,35 @@ Focus:
 **Main question:**  
 Can the process of discovering neural circuits be partially automated?
 
-[My notes →](./conmy-2023.md)
+[My notes →](./ACDC_2023.md)
+
+### McGrath et al. (2023)
+
+**The Hydra Effect: Emergent Self repair in Language Model Computations**
+
+Focus:
+- Compensation after ablation
+- Interacting attention layers
+- Interpretation limits of single component interventions
+
+**Main question:**
+Can other components change their behavior after one component is ablated?
+
+[Paper →](https://arxiv.org/abs/2307.15771)
+
+### Heimersheim and Nanda (2024)
+
+**How to use and interpret activation patching**
+
+Focus:
+- Activation patching design
+- Metric and corruption choices
+- Interpreting causal evidence carefully
+
+**Main question:**
+What can activation patching scores support, and what common conclusions go beyond the evidence?
+
+[Paper →](https://arxiv.org/abs/2404.15255)
 
 ---
 
