@@ -22,7 +22,7 @@ Focus:
 **Main question:**  
 How does GPT-2 Small internally perform IOI?
 
-[My notes →](./wang-2022.md)
+[My notes →](./IOI_2022_Wang.md)
 
 ---
 
@@ -40,7 +40,7 @@ Focus:
 **Main question:**  
 Can the process of discovering neural circuits be partially automated?
 
-[My notes →](./conmy-2023.md)
+[My notes →](./ACDC_2023.md)
 
 ---
 

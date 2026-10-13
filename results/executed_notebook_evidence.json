@@ -1,0 +1,209 @@
+{
+  "provenance": "Transcribed from printed outputs in 01_pynb.ipynb; this script does not rerun the model.",
+  "baselines": [
+    {
+      "dataset": "D0",
+      "clean_logit_difference": 3.6,
+      "corrupted_logit_difference": -0.32,
+      "io_over_subject_accuracy": 1.0
+    },
+    {
+      "dataset": "D1",
+      "clean_logit_difference": 3.42,
+      "corrupted_logit_difference": -0.19,
+      "io_over_subject_accuracy": 1.0
+    },
+    {
+      "dataset": "D2",
+      "clean_logit_difference": 3.88,
+      "corrupted_logit_difference": -0.23,
+      "io_over_subject_accuracy": 0.99
+    }
+  ],
+  "ranking_agreement": {
+    "d0_patch_vs_zero_spearman": 0.485,
+    "d0_vs_d1_patch_spearman": 0.933,
+    "d0_vs_d2_patch_spearman": 0.912,
+    "d0_d1_top10_overlap": 10,
+    "d0_d2_top10_overlap": 10
+  },
+  "cumulative_patching_fraction_gap_removed": [
+    {
+      "k": 1,
+      "top_k": 0.38,
+      "random_k": 0.0
+    },
+    {
+      "k": 2,
+      "top_k": 0.52,
+      "random_k": 0.06
+    },
+    {
+      "k": 3,
+      "top_k": 0.69,
+      "random_k": -0.0
+    },
+    {
+      "k": 5,
+      "top_k": 0.83,
+      "random_k": 0.1
+    },
+    {
+      "k": 8,
+      "top_k": 1.0,
+      "random_k": 0.09
+    },
+    {
+      "k": 10,
+      "top_k": 0.97,
+      "random_k": 0.11
+    },
+    {
+      "k": 15,
+      "top_k": 1.0,
+      "random_k": 0.13
+    },
+    {
+      "k": 20,
+      "top_k": 1.02,
+      "random_k": 0.32
+    }
+  ],
+  "mlp_patching_top5": [
+    {
+      "layer": 0,
+      "score": 0.973
+    },
+    {
+      "layer": 5,
+      "score": 0.224
+    },
+    {
+      "layer": 4,
+      "score": 0.131
+    },
+    {
+      "layer": 2,
+      "score": 0.095
+    },
+    {
+      "layer": 1,
+      "score": 0.082
+    }
+  ],
+  "mlp_zero_ablation_top5": [
+    {
+      "layer": 0,
+      "score": 1.253
+    },
+    {
+      "layer": 5,
+      "score": 0.321
+    },
+    {
+      "layer": 7,
+      "score": 0.246
+    },
+    {
+      "layer": 6,
+      "score": 0.214
+    },
+    {
+      "layer": 4,
+      "score": 0.209
+    }
+  ],
+  "caveat": "Scores can exceed one under this normalized mean-gap metric. They are intervention effect sizes, not proportions of a disjoint additive circuit.",
+  "top_d0_patch_heads": [
+    {
+      "layer": 8,
+      "head": 6,
+      "d0_patch_score": 0.379,
+      "bootstrap_95_ci_low": 0.35,
+      "bootstrap_95_ci_high": 0.409,
+      "d0_zero_score": 0.369,
+      "d1_patch_score": 0.368
+    },
+    {
+      "layer": 5,
+      "head": 5,
+      "d0_patch_score": 0.281,
+      "bootstrap_95_ci_low": 0.259,
+      "bootstrap_95_ci_high": 0.307,
+      "d0_zero_score": 0.089,
+      "d1_patch_score": 0.303
+    },
+    {
+      "layer": 8,
+      "head": 10,
+      "d0_patch_score": 0.279,
+      "bootstrap_95_ci_low": 0.255,
+      "bootstrap_95_ci_high": 0.306,
+      "d0_zero_score": 0.329,
+      "d1_patch_score": 0.29
+    },
+    {
+      "layer": 7,
+      "head": 9,
+      "d0_patch_score": 0.239,
+      "bootstrap_95_ci_low": 0.224,
+      "bootstrap_95_ci_high": 0.256,
+      "d0_zero_score": 0.22,
+      "d1_patch_score": 0.27
+    },
+    {
+      "layer": 9,
+      "head": 9,
+      "d0_patch_score": 0.218,
+      "bootstrap_95_ci_low": 0.192,
+      "bootstrap_95_ci_high": 0.247,
+      "d0_zero_score": 0.126,
+      "d1_patch_score": 0.17
+    },
+    {
+      "layer": 6,
+      "head": 9,
+      "d0_patch_score": 0.171,
+      "bootstrap_95_ci_low": 0.145,
+      "bootstrap_95_ci_high": 0.195,
+      "d0_zero_score": 0.122,
+      "d1_patch_score": 0.15
+    },
+    {
+      "layer": 3,
+      "head": 0,
+      "d0_patch_score": 0.148,
+      "bootstrap_95_ci_low": 0.132,
+      "bootstrap_95_ci_high": 0.169,
+      "d0_zero_score": 0.103,
+      "d1_patch_score": 0.15
+    },
+    {
+      "layer": 7,
+      "head": 3,
+      "d0_patch_score": 0.121,
+      "bootstrap_95_ci_low": 0.107,
+      "bootstrap_95_ci_high": 0.134,
+      "d0_zero_score": 0.117,
+      "d1_patch_score": 0.09
+    },
+    {
+      "layer": 10,
+      "head": 0,
+      "d0_patch_score": 0.101,
+      "bootstrap_95_ci_low": 0.091,
+      "bootstrap_95_ci_high": 0.113,
+      "d0_zero_score": 0.099,
+      "d1_patch_score": 0.14
+    },
+    {
+      "layer": 5,
+      "head": 9,
+      "d0_patch_score": 0.093,
+      "bootstrap_95_ci_low": 0.066,
+      "bootstrap_95_ci_high": 0.123,
+      "d0_zero_score": 0.238,
+      "d1_patch_score": 0.07
+    }
+  ]
+}
