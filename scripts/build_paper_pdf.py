@@ -147,7 +147,7 @@ def main():
     font, bold_font = register_fonts()
     styles = make_styles(font, bold_font)
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    doc = SimpleDocTemplate(str(OUTPUT), pagesize=LETTER, rightMargin=0.72 * inch, leftMargin=0.72 * inch, topMargin=0.68 * inch, bottomMargin=0.72 * inch, title="Robustness of Attention Head Intervention Rankings in GPT 2 Small", author="GPT 2 Small IOI research project")
+    doc = SimpleDocTemplate(str(OUTPUT), pagesize=LETTER, rightMargin=0.72 * inch, leftMargin=0.72 * inch, topMargin=0.68 * inch, bottomMargin=0.72 * inch, title="Robustness of Attention Head Intervention Rankings in GPT 2 Small", author="Haider Imran", subject="Independent mechanistic interpretability research report")
     story = parse_markdown(SOURCE.read_text(encoding="utf-8"), styles)
     doc.build(story, onFirstPage=footer, onLaterPages=footer)
     print(OUTPUT)
