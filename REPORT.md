@@ -2,9 +2,13 @@
 
 ## An evidence based study of the Indirect Object Identification task
 
+### Author
+
+Haider Imran, independent researcher
+
 ### Author note
 
-This report is written as a first independent research paper by a beginner in mechanistic interpretability. The goal is to explain the work clearly and honestly. The study is based on the outputs saved inside the original notebook in this repository. It is not presented as a new run performed during this documentation update. The original notebook, its printed results, and its embedded figures are the primary evidence.
+This report is written by Haider Imran as an independent research project in mechanistic interpretability. The goal is to explain the work clearly and honestly. The study is based on the outputs saved inside the original notebook in this repository. It is not presented as a new run performed during this documentation update. The original notebook, its printed results, and its embedded figures are the primary evidence.
 
 ## Abstract
 
