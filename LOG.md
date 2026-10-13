@@ -16,12 +16,16 @@ Actions completed:
 - Created an extraction script and machine-readable CSV/JSON record from stored notebook outputs.
 - Extracted the four non-empty embedded notebook figures into `results/figures/`.
 - Wrote `RESULTS.md` and `REPORT.md`, explicitly separating stored measurements from future experiments.
-- Preserved the original notebook untouched as the primary historical artifact.
+- Preserved the notebook’s code cells, execution outputs, and embedded figures as the primary historical evidence. Only stale markdown summary cells were corrected.
+- Corrected the public notebook’s stale prose summaries so D2 now consistently reports Spearman 0.912 and 10/10 overlap, and the patch versus zero comparison consistently reports 0.485.
+- Corrected the L5H5 attention description: its recorded last-token attention is mainly on BOS, while the induction and duplicate-token roles act at earlier positions.
+- Added the published IOI role comparison, negative mover observations, the L0H9 zero-ablation caveat, the MLP layer-order correction, and the limitations around rank uncertainty and circular cumulative patching.
+- Added a readable PDF at `output/pdf/gpt2_ioi_research_paper.pdf` generated from `REPORT.md`.
 
 ## Reproducibility status
 
 **Evidence-preserving, not fully reproducible from this checkout.** The code for the original run is present in the notebook, but raw activation caches, per-prompt outcomes, generated figures/tensors, dependency lockfile, and the original runtime are not. A future rerun must create a new dated evidence bundle rather than overwrite these stored results.
 
-## Handoff to paper planning
+## Paper status
 
-The repository is now ready for a paper discussion. The paper should begin as a narrow robustness/replication report based on the stored measurements. It should not present the unexecuted head-by-MLP factorial test as a finding. The next decision is the paper’s title, central claim, and target audience—not another undocumented experiment.
+The repository now contains a full paper draft and PDF. It is a narrow robustness and replication report based on stored notebook measurements. It does not present the unexecuted head-by-MLP factorial test as a finding. A human review should happen before public sharing or submission.

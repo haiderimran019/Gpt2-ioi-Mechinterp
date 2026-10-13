@@ -6,13 +6,15 @@ The full paper is [`REPORT.md`](REPORT.md); the concise evidence audit is [`RESU
 
 ## Current stage
 
-The experiment audit is complete. We have **not** finalized the research paper yet. The next step is to decide the paper’s exact claim and outline from the evidence below. No new measurements should be implied until the missing raw outputs and a head-by-MLP interaction test are available.
+The repository now contains a complete evidence based paper draft and a PDF. The paper is a replication and audit report based on the stored notebook outputs. It does not claim a new circuit or a completed head and MLP interaction experiment.
 
 ## What the stored run supports
 
 On 100 D0 prompts, the notebook reported a clean IOI logit difference of 3.60, a corrupted value of -0.32, and 100% IO-over-subject accuracy. Corrupted-activation patching ranked L8H6 highest (0.379 fraction of the clean-corrupted gap removed; bootstrap 95% CI [0.350, 0.409]). The ten highest-ranked heads were reproduced exactly in the notebook’s held-out template and lexical-set sweeps (rank correlations 0.933 and 0.912 respectively).
 
 It also reports broad MLP-output patching effects, especially at layer 0 (0.973) and layer 5 (0.224). This is evidence that those **whole MLP outputs are causally consequential under the stated intervention**. It is not evidence that a particular MLP mediates a particular head: no head-by-MLP factorial or path-patching experiment was run.
+
+The notebook also records the canonical role pattern described in earlier IOI work. The patching top ten include S inhibition, induction related, duplicate token, and name mover heads. Negative patching scores for L10H7 and L11H10 have the sign expected for negative name movers. These are role comparisons with prior work, not a new circuit discovery.
 
 In beginner-friendly terms: an intervention temporarily swaps or removes an internal signal and checks whether the model’s answer changes. A “logit difference” is simply the model’s preference for the correct name over the competing name. D0 is the main prompt set, D1 changes the wording, and D2 changes the vocabulary.
 
@@ -30,8 +32,10 @@ In beginner-friendly terms: an intervention temporarily swaps or removes an inte
 configs/executed_notebook_manifest.json exact study record and evidence limits
 scripts/extract_notebook_evidence.py   extracts the stored evidence; does not run GPT-2
 results/                               generated CSV/JSON evidence tables and notebook figures
+output/pdf/gpt2_ioi_research_paper.pdf  readable PDF of the current paper draft
+scripts/build_paper_pdf.py              rebuilds the PDF from REPORT.md
 RESULTS.md                             reconciled results and error audit
-REPORT.md                              working evidence report; not a final paper
+REPORT.md                              full paper draft with methods, results, limits, and references
 LOG.md                                 chronological project and audit record
 literature/                            reading notes and literature index
 ```
@@ -44,9 +48,11 @@ python3 scripts/extract_notebook_evidence.py
 
 This only materialises existing notebook outputs. It does not download a model, alter the original notebook, or create fresh measurements.
 
-## Next step: research-paper decision
+## Paper status
 
-Use the evidence report to choose a narrow, honest paper claim. The strongest current claim is a robustness/replication result: the same heads ranked highly across these two controlled shifts. A head–MLP interaction claim remains a proposed future experiment, not a result.
+The paper is ready for a careful human review. It is honest about what was measured, what was inferred from prior literature, and what was not run. The strongest current claim is a robustness and replication result: the same heads ranked highly across two controlled prompt shifts. A head and MLP interaction claim remains a proposed future experiment, not a result.
+
+The PDF can be shared as a project report after your review. For a formal publication, the next step would be an independent rerun with raw per prompt outputs, rank uncertainty, held out top k evaluation, and the factorial head and MLP experiment described in the paper.
 
 ## Re-running later
 
