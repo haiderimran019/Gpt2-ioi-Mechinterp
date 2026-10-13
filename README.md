@@ -6,7 +6,7 @@ The full paper is [`REPORT.md`](REPORT.md); the concise evidence audit is [`RESU
 
 ## Current stage
 
-The repository now contains a complete evidence based paper draft and a PDF. The paper is a replication and audit report based on the stored notebook outputs. It does not claim a new circuit or a completed head and MLP interaction experiment.
+The repository now contains the completed evidence based paper, its PDF, the corrected notebook, and the full audit record. The paper is a replication and audit report based on stored notebook outputs. It does not claim a new circuit or a completed head and MLP interaction experiment.
 
 ## What the stored run supports
 
@@ -50,9 +50,9 @@ This only materialises existing notebook outputs. It does not download a model, 
 
 ## Paper status
 
-The paper is ready for a careful human review. It is honest about what was measured, what was inferred from prior literature, and what was not run. The strongest current claim is a robustness and replication result: the same heads ranked highly across two controlled prompt shifts. A head and MLP interaction claim remains a proposed future experiment, not a result.
+The paper is finalized for this project stage. It is honest about what was measured, what was inferred from prior literature, and what was not run. The strongest claim is a robustness and replication result: the same heads ranked highly across two controlled prompt shifts. A head and MLP interaction claim remains a proposed future experiment, not a result.
 
-The PDF can be shared as a project report after your review. For a formal publication, the next step would be an independent rerun with raw per prompt outputs, rank uncertainty, held out top k evaluation, and the factorial head and MLP experiment described in the paper.
+The PDF can be shared as a project report. For a formal publication, the next step would be an independent rerun with raw per prompt outputs, rank uncertainty, held out top k evaluation, and the factorial head and MLP experiment described in the paper.
 
 ## Re-running later
 

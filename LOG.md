@@ -28,4 +28,4 @@ Actions completed:
 
 ## Paper status
 
-The repository now contains a full paper draft and PDF. It is a narrow robustness and replication report based on stored notebook measurements. It does not present the unexecuted head-by-MLP factorial test as a finding. A human review should happen before public sharing or submission.
+The repository now contains the finalized paper for this project stage and its PDF. It is a narrow robustness and replication report based on stored notebook measurements. It does not present the unexecuted head-by-MLP factorial test as a finding. It is suitable for public project sharing, but not yet a claim of a new published discovery.
